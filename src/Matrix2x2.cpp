@@ -2,20 +2,7 @@
 
 
 
-Matrix2x2::Matrix2x2()
-{
-    for(int i=0; i < SIZE; i++)
-    {
-        for(int j=0; j < SIZE; j++)
-        {
-            value[i][j] = 0.0;
-        }
-        
-    }
-}
-
-
-void Matrix2x2::count(double angle)
+Matrix2x2::Matrix2x2(double angle)
 {
     double rad = angle * M_PI/180.0;
 

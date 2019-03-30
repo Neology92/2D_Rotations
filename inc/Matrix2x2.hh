@@ -17,8 +17,7 @@ private:
   double value[SIZE][SIZE];
 
 public:
-  Matrix2x2();                             /* Constructor initializes values by 0 */
-  void count(double);                      /* Counts matrix based on angle */
+  Matrix2x2(double);                       /* Constructor counts matrix rely on angle*/
   double operator() (int,int) const;       /* (Getter) - [] operator overload - allows to access to values */
 
 };
