@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <cmath>
+#include <assert.h>
 
 #define SIZE 2      /* of matrix */
 

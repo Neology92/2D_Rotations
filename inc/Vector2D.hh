@@ -3,6 +3,7 @@
 #include "Matrix2x2.hh"
 #include <iostream>
 #include <cstdarg>
+#include <assert.h>
 
 #define DIMENSIONS 2               // Number of dimensions for Vector.. class
 
@@ -25,8 +26,8 @@ public:
    * 
    * @param arg - array of coordinates
    */
-  void Set(double []);
-  double operator [] (int) const;       /* (Getter) - [] operator overload - allows to access to coordinate */
+  double operator [] (int) const;       /* (Getter) - [] operator overload - allows to show coordinate */
+  double& operator[] (int index);       /* (Setter) - ---------||--------- - allows to rewrite coordinate */
 };
 
 
@@ -57,6 +58,16 @@ std::ostream& operator << (std::ostream& stream, Vector2D& vector);
  * @return Vector2D   - result of multiplication
  */
 Vector2D operator * (Matrix2x2& matrix, Vector2D& vector);
+
+
+/**
+ * @brief Allows to multiply Vector2D by Vector 2D
+ * 
+ * @param vector 
+ * @param vector 
+ * @return Vector2D - result
+ */
+Vector2D operator * (Vector2D& v1, Vector2D& v2);
 
 
 /**

@@ -28,6 +28,9 @@ void Matrix2x2::Set(double angle)
 
 double Matrix2x2::operator() (int x,int y) const
 {
+    assert(x >= 0 && x < SIZE
+        && y >= 0 && y < SIZE);
+
     return value[x][y];
 }
 

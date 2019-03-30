@@ -8,21 +8,9 @@ Vector2D::Vector2D()
         coordinate[i] = 0.0;
     }
 }
-// Constructor overload
-Vector2D::Vector2D(double x, double y)
-{
-    coordinate[0] = x;
-    coordinate[1] = y;
-}
+
 // Constructor overload
 Vector2D::Vector2D(double arg[])
-{
-    Set(arg);
-}
-
-
-
-void Vector2D::Set(double arg[])
 {
     for(int i=0; i < DIMENSIONS; i++){
         coordinate[i] = arg[i];
@@ -32,6 +20,15 @@ void Vector2D::Set(double arg[])
 
 double Vector2D::operator[] (int index) const
 {
+    assert(index>=0 && index < DIMENSIONS);
+        return coordinate[index]; 
+}
+
+
+double& Vector2D::operator[] (int index)
+{
+    assert(index>=0 && index < DIMENSIONS);
+
     return coordinate[index]; 
 }
 
@@ -44,7 +41,9 @@ std::istream& operator >> (std::istream& stream, Vector2D& vector)
         stream >> list[i];
     }
 
-    vector.Set(list);
+    for(int i=0; i < DIMENSIONS; i++){
+        vector[i] = list[i];
+    }
 
     return stream;
 }
@@ -63,10 +62,12 @@ std::ostream& operator << (std::ostream& stream, Vector2D& vector)
 
 Vector2D operator * (Matrix2x2& matrix, Vector2D& vector)
 {
-    double XY[2];
+    double XY[DIMENSIONS];
 
-    XY[0] = matrix(0,0)*vector[0] + matrix(0,1)*vector[1];
-    XY[1] = matrix(1,0)*vector[0] + matrix(1,1)*vector[1];
+    for(int i=0; i < DIMENSIONS; i++)
+    {
+        XY[i] = matrix(i,0)*vector[0] + matrix(i,1)*vector[1];
+    }
     
     Vector2D result(XY);
 
@@ -74,8 +75,27 @@ Vector2D operator * (Matrix2x2& matrix, Vector2D& vector)
 }
 
 
+Vector2D operator * (Vector2D& v1, Vector2D& v2)
+{
+    Vector2D result;
+
+    for(int i=0; i<DIMENSIONS; i++)
+    {
+        result[i] = v1[i] * v2[i];
+    }
+
+    return result;
+}
+
+
 Vector2D operator + (Vector2D& v1, Vector2D& v2)
 {
-    Vector2D result(v1[0]+v2[0], v1[1]+v2[1]);
+    Vector2D result;
+
+    for(int i=0; i < DIMENSIONS; i++)
+    {
+        result[i] = v1[i] + v2[i];
+    }
+
     return result;
 }

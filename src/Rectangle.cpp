@@ -5,19 +5,19 @@
     // Constructor overload
     Rectangle::Rectangle(Vector2D arg[])
     {
-        Set(arg);
-    }
-
-
-    void Rectangle::Set(Vector2D arg[])
-    {
         for(int i=0; i < POINTS; i++){
-        vertice[i] = arg[i];
+            vertice[i] = arg[i];
         }
     }
 
 
     Vector2D Rectangle::operator[] (int index) const
+    {
+        return vertice[index];
+    }
+
+
+    Vector2D& Rectangle::operator[] (int index) 
     {
         return vertice[index];
     }
@@ -55,10 +55,10 @@
     {
         Vector2D moved[4];
 
+
         for(int i=0; i<POINTS; i++)
         {
-            Vector2D vertice = rectangle[i];
-            moved[i] = vertice + vector;
+            moved[i] = rectangle[i] + vector;
         }
 
         Rectangle result(moved);

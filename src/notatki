@@ -10,5 +10,23 @@ Rectangle.cpp - operator << -> in for
     Konstruktor overload
 
 
+Setter jako przeicążenie []
 
-translacja wektora!
+
+
+
+Rozszerzenia (max 3 pkt):
+
+    -   animacja rotacji i translacji      
+    -   porównanie kosztu obliczeń za mniejszy błąd numeryczny albo coś innego ciekawego
+
+
+Porównywanie:
+    do 10 miejsc po przeicnku
+
+
+Mnożenie skalarne dodać
+
+
+
+przeciążenia - dwa wktory wewnątrz klasy

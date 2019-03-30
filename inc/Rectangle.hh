@@ -19,7 +19,7 @@ private:
 public:
   Rectangle();                             /* Constructor */
   Rectangle(Vector2D[]);                   /* Calls Setter */
-  void Set(Vector2D[]);                    /* (Setter) */
+  Vector2D& operator[] (int);              /* (Setter) */
   Vector2D operator [] (int) const;        /* (Getter) - [] operator overload - allows to access to coordinate */
 };
 
