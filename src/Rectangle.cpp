@@ -40,13 +40,12 @@
     {
         Vector2D rotated[4];
 
-        for(int i=0; i<POINTS; i++){
-            Vector2D vertice = rectangle[i];
-            rotated[i] = matrix * vertice;
+        for(int i=0; i<POINTS; i++)
+        {
+            rotated[i] = matrix * rectangle[i];
         }
 
         Rectangle result(rotated);
-
         return result;
     }
 
@@ -54,7 +53,6 @@
     Rectangle operator + (Rectangle& rectangle, Vector2D& vector)
     {
         Vector2D moved[4];
-
 
         for(int i=0; i<POINTS; i++)
         {

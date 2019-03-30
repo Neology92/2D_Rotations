@@ -75,26 +75,26 @@ Vector2D operator * (Matrix2x2& matrix, Vector2D& vector)
 }
 
 
-Vector2D operator * (Vector2D& v1, Vector2D& v2)
+Vector2D Vector2D::operator * (Vector2D& v2)
 {
     Vector2D result;
 
-    for(int i=0; i<DIMENSIONS; i++)
     {
-        result[i] = v1[i] * v2[i];
+    for(int i=0; i<DIMENSIONS; i++)
+        result[i] = (*this)[i] * v2[i];
     }
 
     return result;
 }
 
 
-Vector2D operator + (Vector2D& v1, Vector2D& v2)
+Vector2D Vector2D::operator + (Vector2D& v2)
 {
     Vector2D result;
 
     for(int i=0; i < DIMENSIONS; i++)
     {
-        result[i] = v1[i] + v2[i];
+        result[i] = (*this)[i] + v2[i];
     }
 
     return result;
