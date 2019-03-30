@@ -1,5 +1,7 @@
 #pragma once
 
+#include<iostream>
+
 /* 
  *  operating.hh - this file contains annoucements of:
  *  operating functions, which are needed to visual side of program, 

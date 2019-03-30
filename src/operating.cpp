@@ -1,6 +1,66 @@
 #include "operating.hh"
 
 
+void menu()
+{
+    char c;
+
+    system("clear");
+
+    do
+    {
+        std::cin >> c;
+
+        if(std::cin.fail())
+        {
+            std::cout << "Failed, please enter your choice again: ";
+            std::cin.clear();
+            continue;
+        }
+
+
+        switch (c)
+        {
+            case 'r':
+                // rotate rectangle by angle
+                break;
+
+            case 'm':
+                // move Rectangle by vector
+                break;
+
+            case 'c':
+                // show rectangle coordinates
+                break;
+
+            case 'q':
+                // quit
+                break;
+
+            default:
+                std::cout << "Unknown option, try again: ";
+                break;
+        }
+
+    } while (c != 'q');
+    
+    
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // /*!
 //  * Przyklad zapisu wspolrzednych zbioru punktow do strumienia wyjściowego.
 //  * Dane sa odpowiednio sformatowane, tzn. przyjęto notację stałoprzecinkową
