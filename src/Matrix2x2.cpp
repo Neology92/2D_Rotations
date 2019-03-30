@@ -15,7 +15,7 @@ Matrix2x2::Matrix2x2()
 }
 
 
-void Matrix2x2::Set(double angle)
+void Matrix2x2::count(double angle)
 {
     double rad = angle * M_PI/180.0;
 
