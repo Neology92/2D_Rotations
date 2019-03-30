@@ -1,5 +1,5 @@
 #
-#  To sa opcje dla kompilacji
+#  Compilation settings
 #
 CXXFLAGS=-g -Iinc -Wall -pedantic -std=c++0x
 
@@ -7,9 +7,10 @@ __start__: rotation_2D
 	./rotation_2D
 
 rotation_2D: obj obj/main.o obj/Rectangle.o obj/Matrix2x2.o obj/Vector2D.o\
-           obj/gnuplot_link.o
+           obj/gnuplot_link.o obj/operating.o
 	g++ -Wall -pedantic -std=c++0x -o rotation_2D obj/main.o obj/Vector2D.o\
-                        obj/Matrix2x2.o obj/Rectangle.o obj/gnuplot_link.o
+                        obj/Matrix2x2.o obj/Rectangle.o obj/gnuplot_link.o\
+						obj/operating.o
 
 obj:rotation_2D
 	mkdir obj
@@ -28,6 +29,9 @@ obj/Matrix2x2.o: src/Matrix2x2.cpp inc/Matrix2x2.hh
 
 obj/Vector2D.o: src/Vector2D.cpp inc/Vector2D.hh
 	g++ -c ${CXXFLAGS} -o obj/Vector2D.o src/Vector2D.cpp
+
+obj/operating.o: src/operating.cpp inc/operating.hh
+	g++ -c ${CXXFLAGS} -o obj/operating.o src/operating.cpp
 
 clean:
 	rm -f obj/*.o rotation_2D
