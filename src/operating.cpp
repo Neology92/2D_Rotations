@@ -3,22 +3,27 @@
 
 void menu()
 {
+    std::string line;
     char c;
 
     system("clear");
 
     do
     {
-        std::cin >> c;
+        std::getline(std::cin, line);
 
-        if(std::cin.fail())
+        if(std::cin.fail() || line.length() != 1)
         {
             std::cout << "Failed, please enter your choice again: ";
             std::cin.clear();
             continue;
         }
-
-
+        else
+        {
+            c = line[0];
+        }
+        
+        
         switch (c)
         {
             case 'r':
@@ -43,9 +48,6 @@ void menu()
         }
 
     } while (c != 'q');
-    
-    
-
 }
 
 

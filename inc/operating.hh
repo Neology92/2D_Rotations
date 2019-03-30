@@ -1,6 +1,7 @@
 #pragma once
 
-#include<iostream>
+#include <iostream>
+#include <string.h>
 
 /* 
  *  operating.hh - this file contains annoucements of:
