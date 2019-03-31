@@ -52,7 +52,7 @@ std::istream& operator >> (std::istream& stream, Vector2D& vector)
 std::ostream& operator << (std::ostream& stream, Vector2D& vector)
 {
     for (int i=0; i < DIMENSIONS; i++){
-     std::cout << vector[i];
+     std::cout << std::setw(16) << std::fixed << std::setprecision(10) << vector[i];
      std::cout << " ";
     }
 

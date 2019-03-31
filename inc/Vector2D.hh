@@ -4,6 +4,7 @@
 #include <iostream>
 #include <cstdarg>
 #include <assert.h>
+#include <iomanip>
 
 #define DIMENSIONS 2               // Number of dimensions for Vector.. class
 
