@@ -28,6 +28,7 @@ public:
   void move(Vector2D);                     /* Moves rectangle by vector */
   bool check();                            /* Checks if the oppsoite sides are equal (10 positions behinf dot); true - equal, false - not equal */
   void len();                              /* Shows sides length */
+  void coord();                            /* Shows vertices coordinates */
 };
 
 

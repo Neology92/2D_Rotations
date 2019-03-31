@@ -97,6 +97,15 @@
     }
 
 
+    void Rectangle::coord()
+    {
+        for(int i=0; i<POINTS; i++)
+        {
+            std::cout << (char)(65+i) << ": " << vertice[i] << std::endl;
+        }
+    }
+
+
 
     std::ostream& operator << (std::ostream& stream,  Rectangle& rectangle)
     {
