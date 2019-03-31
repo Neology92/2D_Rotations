@@ -4,7 +4,7 @@
 CXXFLAGS=-g -Iinc -Wall -pedantic -std=c++0x
 
 __start__: rotation_2D
-	./rotation_2D
+	# ./rotation_2D
 
 rotation_2D: obj obj/main.o obj/Rectangle.o obj/Matrix2x2.o obj/Vector2D.o\
            obj/gnuplot_link.o obj/operating.o

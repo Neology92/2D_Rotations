@@ -1,20 +1,43 @@
 #include "operating.hh"
 
 
-void menu()
+void show_options()
+{
+    std::cout << "========================================" << std::endl;
+    std::cout << "=============== M E N U ================" << std::endl;
+    std::cout << "|                                      |" << std::endl;
+    std::cout << "|--------------------------------------|" << std::endl;
+    std::cout << "|                                      |" << std::endl;
+    std::cout << "| r - rotate rectangle by angle        |" << std::endl;
+    std::cout << "| m - move rectangle by vector         |" << std::endl;
+    std::cout << "| s - show rectangle coordintes        |" << std::endl;
+    std::cout << "| o - show options                     |" << std::endl;
+    std::cout << "| q - quit                             |" << std::endl;
+    std::cout << "|                                      |" << std::endl;
+    std::cout << "|--------------------------------------|" << std::endl;
+    std::cout << "|                                      |" << std::endl;
+    std::cout << "========================================" << std::endl;
+    std::cout << "----------------------------------------" << std::endl;
+}
+
+
+void menu( Rectangle& rec)
 {
     std::string line;
     char c;
 
     system("clear");
+    rec.check();
+    show_options();
 
     do
-    {
+    {   
+        std::cout << " Your choice: ";
         std::getline(std::cin, line);
 
         if(std::cin.fail() || line.length() != 1)
         {
-            std::cout << "Failed, please enter your choice again: ";
+            std::cout << " Failed, please enter your choice again: ";
             std::cin.clear();
             continue;
         }
@@ -23,11 +46,22 @@ void menu()
             c = line[0];
         }
         
+        double angle;
+        int count;
         
         switch (c)
         {
             case 'r':
-                // rotate rectangle by angle
+                std::cout << "\n Angle: ";
+                std::cin >> angle;
+
+                std::cout << " How many rotates: ";
+                std::cin >> count;
+                std::cin.ignore(1,'\n');
+
+
+                rec.rotate(angle, count);
+                rec.check();
                 break;
 
             case 'm':
@@ -38,12 +72,17 @@ void menu()
                 // show rectangle coordinates
                 break;
 
+            case 'o':
+                system("clear");
+                rec.check();
+                show_options();
+                break;
+
             case 'q':
-                // quit
                 break;
 
             default:
-                std::cout << "Unknown option, try again: ";
+                std::cout << " Unknown option, try again: ";
                 break;
         }
 

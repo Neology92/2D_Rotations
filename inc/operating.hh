@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <string.h>
+#include "Rectangle.hh"
 
 /* 
  *  operating.hh - this file contains annoucements of:
@@ -13,4 +14,11 @@
 /**
  * @brief Shows main menu on standard output stream
  */
-void menu();
+void show_options();
+
+/**
+ * @brief Calls Operates on rectangle according users choice
+ *
+ * @param rec - object, which has to bo edited
+ */
+void menu(Rectangle& rec);

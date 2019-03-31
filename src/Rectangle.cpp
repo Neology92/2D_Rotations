@@ -63,6 +63,13 @@
             }
         }
 
+        if(fine){
+              std::cout << "\n The opposite sides are: Equal!" << std::endl;
+        }else{
+              std::cout << "\n The opposite sides are: Not equal!" << std::endl;
+        }
+        len();
+
         return fine;
     }
 
@@ -81,7 +88,7 @@
 
         for(int i=0; i<POINTS/2; i++)
         {
-            std::cout << "Length of " << i+1 << " & " << i+3 << ": " << std::endl;
+            std::cout << " Length of " << i+1 << " & " << i+3 << ": " << std::endl;
             std::cout << std::setw(16) << std::fixed << std::setprecision(10) 
                       << pow(values[i][0],2) + pow(values[i][1],2) << std::endl 
                       << std::setw(16) << std::fixed << std::setprecision(10)

@@ -15,7 +15,6 @@ using namespace std;
 
 int main()
 {
-       // menu();
 
 
        double verts[4][2]={{1.0,1.0},{11.0,1.0},{11.0,6.0},{1.0,6.0}};
@@ -30,6 +29,12 @@ int main()
        Rectangle R;
 
        R = V;
+       
+       menu(R);
+
+       return 1;
+
+
        std::cout << std::fixed << std::setprecision(10) << R << std::endl;
 
        if(R.check()){
