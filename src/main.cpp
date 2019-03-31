@@ -1,15 +1,7 @@
 #include <iostream>
-#include <fstream>
-#include <string>
 
 #include "Rectangle.hh"
-#include "gnuplot_link.hh"
 #include "operating.hh"
-
-
-
-using namespace std;
-
 
 
 int main()
