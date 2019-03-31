@@ -15,7 +15,10 @@ using namespace std;
 
 int main()
 {
-       double verts[4][2]={{1.3,1.3},{1.3,2.3},{2.3,2.3},{2.3,1.3}};
+       // menu();
+
+
+       double verts[4][2]={{1.0,1.0},{11.0,1.0},{11.0,6.0},{1.0,6.0}};
 
        Vector2D V[4];
 
@@ -24,16 +27,24 @@ int main()
               V[i] = verts[i];
        }
 
-       Matrix2x2 M;
        Rectangle R;
 
        R = V;
        std::cout << std::fixed << std::setprecision(10) << R << std::endl;
 
-       M.Set(1);
+       if(R.check()){
+              std::cout << "The opposite sides are: Equal!" << std::endl;
+       }else{
+              std::cout << "The opposite sides are: Not equal!" << std::endl;
+       }
+       R.len();
 
-       for(int i=0; i < 3600000; i++)
-       R = M*R;
-       std::cout << std::fixed << std::setprecision(10) << R << std::endl;
+       R.rotate(1,3600000);
 
+       if(R.check()){
+              std::cout << "The opposite sides are: Equal!" << std::endl;
+       }else{
+              std::cout << "The opposite sides are: Not equal!" << std::endl;
+       }
+       R.len();
 }

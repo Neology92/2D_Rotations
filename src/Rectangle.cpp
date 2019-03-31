@@ -51,30 +51,43 @@
         {
            for(int j=0; j<DIMENSIONS; j++)
            {
-                values[i][j] = abs((*this)[i][j] - (*this)[i+1][j]);
+                values[i][j] = (*this)[i][j] - (*this)[i+1][j];
            }
         }
 
-        for(int i=0; i<SIDES; i++)
+        for(int i=0; i<POINTS/2; i++)
         {
-           for(int j=0; j<DIMENSIONS; j++)
-           {
-               std::cout << "[" << i << "][" <<j << "] :" << values[i][j] << std::endl;
-           }
+            if( pow(values[i][0],2) + pow(values[i][1],2) != pow(values[i+2][0],2) + pow(values[i+2][1],2) )
+            {
+                fine = false;
+            }
         }
-
-        
-
-
-
-        // if(pow(values[0],2) + pow(values[1],2) != pow(values[2],2) + pow(values[3],2))
-            // fine = false;
-
 
         return fine;
     }
 
 
+    void Rectangle::len()
+    {
+        double values[SIDES][DIMENSIONS];
+
+        for(int i=0; i<SIDES; i++)
+        {
+           for(int j=0; j<DIMENSIONS; j++)
+           {
+                values[i][j] = (*this)[i][j] - (*this)[i+1][j];
+           }
+        }
+
+        for(int i=0; i<POINTS/2; i++)
+        {
+            std::cout << "Length of " << i+1 << " & " << i+3 << ": " << std::endl;
+            std::cout << std::setw(16) << std::fixed << std::setprecision(10) 
+                      << pow(values[i][0],2) + pow(values[i][1],2) << std::endl 
+                      << std::setw(16) << std::fixed << std::setprecision(10)
+                      << pow(values[i+2][0],2) + pow(values[i+2][1],2) << std::endl << std::endl;
+        }
+    }
 
 
 
