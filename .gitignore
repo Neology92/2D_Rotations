@@ -1,3 +1,4 @@
 *.o
 rotation_2D
-.vscode/
+.vscode/*
+notatki
