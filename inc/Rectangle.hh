@@ -1,6 +1,7 @@
 #pragma once
 
 #include <iostream>
+#include <cmath>
 #include "Vector2D.hh"
 
 #define POINTS 4      /* number of vertices */
@@ -21,6 +22,10 @@ public:
   Rectangle(Vector2D[]);                   /* Calls Setter */
   Vector2D& operator[] (int);              /* (Setter) */
   Vector2D operator [] (int) const;        /* (Getter) - [] operator overload - allows to access to coordinate */
+
+  void rotate(double, int);                /* Rotates rectangle by angle - certain number of times */
+  void move(Vector2D);                     /* Moves rectangle by vector */
+  bool check();                            /* Checks if the oppsoite sides are equal (10 positions behinf dot); true - equal, false - not equal */
 };
 
 
