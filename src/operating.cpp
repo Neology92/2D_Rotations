@@ -3,21 +3,21 @@
 
 void show_options()
 {
-    std::cout << "========================================" << std::endl;
-    std::cout << "=============== M E N U ================" << std::endl;
-    std::cout << "|                                      |" << std::endl;
-    std::cout << "|--------------------------------------|" << std::endl;
-    std::cout << "|                                      |" << std::endl;
-    std::cout << "| r - rotate rectangle by angle        |" << std::endl;
-    std::cout << "| m - move rectangle by vector         |" << std::endl;
-    std::cout << "| s - show rectangle coordintes        |" << std::endl;
-    std::cout << "| o - show options                     |" << std::endl;
-    std::cout << "| q - quit                             |" << std::endl;
-    std::cout << "|                                      |" << std::endl;
-    std::cout << "|--------------------------------------|" << std::endl;
-    std::cout << "|                                      |" << std::endl;
-    std::cout << "========================================" << std::endl;
-    std::cout << "----------------------------------------" << std::endl;
+    std::cout << "==========================================" << std::endl;
+    std::cout << "================ M E N U =================" << std::endl;
+    std::cout << "|                                        |" << std::endl;
+    std::cout << "|----------------------------------------|" << std::endl;
+    std::cout << "|                                        |" << std::endl;
+    std::cout << "| r - rotate rectangle by angle          |" << std::endl;
+    std::cout << "| m - move rectangle by vector           |" << std::endl;
+    std::cout << "| c - show rectangle coordintes          |" << std::endl;
+    std::cout << "| o - show options                       |" << std::endl;
+    std::cout << "| q - quit                               |" << std::endl;
+    std::cout << "|                                        |" << std::endl;
+    std::cout << "|----------------------------------------|" << std::endl;
+    std::cout << "|                                        |" << std::endl;
+    std::cout << "==========================================" << std::endl;
+    std::cout << "------------------------------------------" << std::endl;
 }
 
 
@@ -32,8 +32,9 @@ void menu( Rectangle& rec)
 
     do
     {   
-        std::cout << " Your choice: ";
+        std::cout << "\n Your choice: ";
         std::getline(std::cin, line);
+        std::cout << std::endl;
 
         if(std::cin.fail() || line.length() != 1)
         {
@@ -48,11 +49,13 @@ void menu( Rectangle& rec)
         
         double angle;
         int count;
+        Vector2D vector;
         
         switch (c)
         {
             case 'r':
-                std::cout << "\n Angle: ";
+                std::cout << "------------------------------------------" << std::endl;
+                std::cout << " Angle: ";
                 std::cin >> angle;
 
                 std::cout << " How many rotates: ";
@@ -62,14 +65,24 @@ void menu( Rectangle& rec)
 
                 rec.rotate(angle, count);
                 rec.check();
+                std::cout << "------------------------------------------" << std::endl;
                 break;
 
             case 'm':
-                // move Rectangle by vector
+                std::cout << "------------------------------------------" << std::endl;
+                std::cout << " Vector (x y): ";
+                std::cin >> vector;
+                std::cin.ignore(1,'\n');
+                rec = rec + vector;
+                std::cout << "\n New coordinates: " << std::endl;
+                rec.coord();
+                std::cout << "------------------------------------------" << std::endl;
                 break;
 
             case 'c':
-                // show rectangle coordinates
+                std::cout << "------------------------------------------" << std::endl;
+                rec.coord();
+                std::cout << "------------------------------------------" << std::endl;
                 break;
 
             case 'o':
