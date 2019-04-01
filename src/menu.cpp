@@ -97,7 +97,7 @@ void menu( Rectangle& rec)
                 std::cout << " Vector (x y): ";
                 std::cin >> vector;
                 std::cin.ignore(1,'\n');
-                rec = rec + vector;
+                rec.move(vector, link);
                 std::cout << "\n New coordinates: " << std::endl;
                 rec.coord();
                 std::cout << "------------------------------------------" << std::endl;

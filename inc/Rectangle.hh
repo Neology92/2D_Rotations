@@ -5,6 +5,7 @@
 #include <iomanip>
 #include <string.h>
 #include <fstream>
+#include <unistd.h>
 
 #include "Vector2D.hh"
 #include "gnuplot_link.hh"

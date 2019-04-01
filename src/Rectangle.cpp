@@ -28,22 +28,39 @@
     
     void Rectangle::rotate(double angle, int times, PzG::GnuplotLink &link)
     {
-        Matrix2x2 matrix(angle);
+        double fps = 60;               //frame per sec
+        unsigned int microseconds = 1000000/fps;      
+       
+        Matrix2x2 rpf(angle*times/(fps*TIME));                  // rotation per frame
+        
+        Matrix2x2 matrix(angle*times);
+        Rectangle buff = *this;
 
-        for(int i=0; i<times; i++)
+        for(int j=0; j<times; j++)
         {
-            (*this) = matrix * (*this);
+            for(int i=0; i<fps*TIME/times; i++)
+            {
+                usleep(microseconds);
+                (*this) = rpf * (*this);
+                if (!WriteToFileExample("prostokat.dat")) return;
+                link.Draw();        
+            }
         }
 
-//   if (!WriteToFileExample("prostokat.dat",rect)) return 1;
-//   link.Draw(); // <- Tutaj gnuplot rysuje, to co zapisaliśmy do pliku
+        (*this) = matrix * buff;
+        if (!WriteToFileExample("prostokat.dat")) return;
+        link.Draw();
 
+        std::cout << "Press ENTER, to continue" << std::endl;
+        std::cin.ignore(100000,'\n');
     }
 
     void Rectangle::move(Vector2D vector, PzG::GnuplotLink &link)
     {
         Vector2D lpf;                  // length per frame
         double fps = 60;               //frame per sec
+        unsigned int microseconds = 1000000/fps;
+
         Rectangle buff = *this;
 
         for(int i=0; i <DIMENSIONS; i++)
@@ -54,6 +71,7 @@
         link.Draw();
         for(int i=0; i < fps*TIME; i++)
         {
+            usleep(microseconds);
             (*this) = (*this) + lpf;
             if (!WriteToFileExample("prostokat.dat")) return;
             link.Draw();
@@ -62,6 +80,9 @@
         (*this) = buff + vector;
         if (!WriteToFileExample("prostokat.dat")) return;
         link.Draw();
+
+        std::cout << "Press ENTER, to continue" << std::endl;
+        std::cin.ignore(100000,'\n');
     }
 
 
@@ -135,7 +156,7 @@
 int Rectangle::gnuPlotDraw(PzG::GnuplotLink link)
 {
   link.Draw(); // <- Tutaj gnuplot rysuje, to co zapisaliśmy do pliku
-  std::cout << "Naciśnij ENTER, aby kontynuowac" << std::endl;
+  std::cout << "Press ENTER, to continue" << std::endl;
   std::cin.ignore(100000,'\n');
   return 0;
 }
