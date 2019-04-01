@@ -687,9 +687,7 @@ class GnuplotLink {
 };
 
   inline
-  bool GnuplotLink::AddFilesToDrawCommand( std::string &,
-                                                         char const  **
-                                                       )
+  bool GnuplotLink::AddFilesToDrawCommand( std::string &, char const **)
   { return true; }
 
 
