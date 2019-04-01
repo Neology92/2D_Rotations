@@ -55,12 +55,12 @@
         for(int i=0; i < fps*TIME; i++)
         {
             (*this) = (*this) + lpf;
-            if (!WriteToFileExample("prostokat.dat",(*this))) return;
+            if (!WriteToFileExample("prostokat.dat")) return;
             link.Draw();
         }
 
         (*this) = buff + vector;
-        if (!WriteToFileExample("prostokat.dat",(*this))) return;
+        if (!WriteToFileExample("prostokat.dat")) return;
         link.Draw();
     }
 

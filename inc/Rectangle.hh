@@ -7,6 +7,7 @@
 #include <fstream>
 
 #include "Vector2D.hh"
+#include "gnuplot_link.hh"
 
 #define POINTS 4      /* number of vertices */
 

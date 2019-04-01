@@ -45,7 +45,7 @@ void menu( Rectangle& rec)
     // [DEBUG]
     // WriteToStreamExample(std::cout, rect);
     
-    if (!WriteToFileExample("prostokat.dat",rec)) return;
+    if (!rec.WriteToFileExample("prostokat.dat")) return;
 
 /* ========================================================================= */
 /* GNUPLOT ================================================================= */
@@ -87,7 +87,7 @@ void menu( Rectangle& rec)
                 std::cin.ignore(1,'\n');
 
 
-                rec.rotate(angle, count);
+                rec.rotate(angle, count, link);
                 rec.check();
                 std::cout << "------------------------------------------" << std::endl;
                 break;
@@ -116,7 +116,7 @@ void menu( Rectangle& rec)
                 break;
 
             case 'd':
-                gnuPlotDraw(rec);
+                rec.gnuPlotDraw(link);
                 break;
 
             case 'q':
