@@ -1,8 +1,6 @@
 #include <iostream>
 
-#include "Rectangle.hh"
-#include "operating.hh"
-
+#include "menu.hh"
 
 int main()
 {
