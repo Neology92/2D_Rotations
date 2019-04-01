@@ -116,7 +116,9 @@ void menu( Rectangle& rec)
                 break;
 
             case 'd':
+                std::cout << "------------------------------------------" << std::endl;
                 rec.gnuPlotDraw(link);
+                std::cout << "------------------------------------------" << std::endl;
                 break;
 
             case 'q':
