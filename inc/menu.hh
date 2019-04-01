@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-#include "operating.hh"
+#include "Rectangle.hh"
 
 /* 
  *  operating.hh - this file contains annoucements of:
