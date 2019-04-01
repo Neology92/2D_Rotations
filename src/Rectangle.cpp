@@ -1,6 +1,7 @@
 #include "Rectangle.hh"
 
 #define SIDES POINTS       // SIDES are equal do POINTS
+#define TIME 3             // time of animation (in seconds)
 
     // Constructor
     Rectangle::Rectangle(){}
@@ -25,7 +26,7 @@
     }
 
     
-    void Rectangle::rotate(double angle, int times)
+    void Rectangle::rotate(double angle, int times, PzG::GnuplotLink &link)
     {
         Matrix2x2 matrix(angle);
 
@@ -33,11 +34,34 @@
         {
             (*this) = matrix * (*this);
         }
+
+//   if (!WriteToFileExample("prostokat.dat",rect)) return 1;
+//   link.Draw(); // <- Tutaj gnuplot rysuje, to co zapisaliśmy do pliku
+
     }
 
-    void Rectangle::move(Vector2D vector)
+    void Rectangle::move(Vector2D vector, PzG::GnuplotLink &link)
     {
-        (*this) = (*this) + vector;
+        Vector2D lpf;                  // length per frame
+        double fps = 60;               //frame per sec
+        Rectangle buff = *this;
+
+        for(int i=0; i <DIMENSIONS; i++)
+        {
+            lpf[i] = vector[i]/(fps*TIME);
+        }
+
+        link.Draw();
+        for(int i=0; i < fps*TIME; i++)
+        {
+            (*this) = (*this) + lpf;
+            if (!WriteToFileExample("prostokat.dat",(*this))) return;
+            link.Draw();
+        }
+
+        (*this) = buff + vector;
+        if (!WriteToFileExample("prostokat.dat",(*this))) return;
+        link.Draw();
     }
 
 
@@ -105,6 +129,44 @@
         }
     }
 
+// ========================================================================
+//  GnuPlot - Drawing =====================================================
+
+int Rectangle::gnuPlotDraw(PzG::GnuplotLink link)
+{
+  link.Draw(); // <- Tutaj gnuplot rysuje, to co zapisaliśmy do pliku
+  std::cout << "Naciśnij ENTER, aby kontynuowac" << std::endl;
+  std::cin.ignore(100000,'\n');
+  return 0;
+}
+
+void Rectangle::WriteToStreamExample(std::ostream& output_stream)
+{
+    for(int i=0; i<POINTS; i++){
+        output_stream << vertice[i] << std::endl;
+    }
+    output_stream << vertice[0] << std::endl;
+                             // Jeszcze raz zapisujemy pierwszy punkt,
+                             // aby gnuplot narysowal zamkniętą linię.
+}
+
+
+bool Rectangle::WriteToFileExample(std::string filename)
+{
+  std::fstream  file_stream;
+
+  file_stream.open(filename);
+  if (!file_stream.is_open())  {
+    std::cerr << "Error: Open to write operation of file \"" << filename << "\"" << std::endl
+	 << "failed." << std::endl;
+    return false;
+  }
+
+  WriteToStreamExample(file_stream);
+
+  file_stream.close();
+  return !file_stream.fail();
+}
 
 
     std::ostream& operator << (std::ostream& stream,  Rectangle& rectangle)
